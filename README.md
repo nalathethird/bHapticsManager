@@ -1,10 +1,10 @@
 # Resonite bHapticsManager (Mod)
 
-A [ResoniteModLoader](https://github.com/resonite-modding-group/ResoniteModLoader) mod for [Resonite](https://resonite.com/) that modernizes bHaptics integration with the new SDK2 (bHapticsLib v1.0.8+).
+A [ResoniteModLoader](https://github.com/resonite-modding-group/ResoniteModLoader) mod for [Resonite](https://resonite.com/) that modernizes bHaptics integration with the new SDK2 (bHapticsLib v1.0.9+).
 
 ## What does this mod do?
 
-This mod replaces Resonite's outdated bHaptics SDK1 (Bhaptics.Tact) with a modern version of **bHapticsLib v1.0.8** (SDK2+), providing:
+This mod replaces Resonite's outdated bHaptics SDK1 (Bhaptics.Tact) with a modern version of **bHapticsLib v1.0.9** (SDK2+), providing:
 
 - **Hot-plug support** - Connect/disconnect bHaptics devices without restarting Resonite
 - **No frame drops** - Eliminates lag spikes caused by the legacy SDK's broken async patterns from current Resonite version (Beta 2025.9.23.1237)
@@ -14,7 +14,7 @@ This mod replaces Resonite's outdated bHaptics SDK1 (Bhaptics.Tact) with a moder
 
 ## Requirements
 
-**IMPORTANT**: You must have **bHapticsLib.dll v1.0.8 or above** installed before using this mod!
+**IMPORTANT**: You must have **bHapticsLib.dll v1.0.9 or above** installed before using this mod!
 
 ### Installation Steps
 
@@ -23,7 +23,7 @@ This mod replaces Resonite's outdated bHaptics SDK1 (Bhaptics.Tact) with a moder
 2. Download [bHapticsManager.dll](https://github.com/nalathethird/Resonite-bHapticsSDK2Patch/releases/latest/download/bHapticsManager.dll)
 3. Place `bHapticsManager.dll` in your `rml_mods` folder
    - Path: `C:\Program Files (x86)\Steam\steamapps\common\Resonite\rml_mods\`
-4. Download [bhapticsLib.dll](https://github.com/nalathethird/bHapticsLib/releases/latest/download/bHapticsLib.dll)
+4. Download [bhapticsLib.dll](https://github.com/nalathethird/bHapticsLib/releases/latest/download/bHapticsLib.dll) (v1.0.9 or newer)
 5. Place `bhapticsLib.dll` in your `rml_libs` folder
    - Path `C:\Program Files (x86)\Steam\steamapps\common\Resonite\rml_lib\`
    - (Create the folder in your Resonite Directory if it doesn't exist)
@@ -41,7 +41,8 @@ This mod replaces Resonite's outdated bHaptics SDK1 (Bhaptics.Tact) with a moder
 - Haptic Points in Resonite now resolve and send Haptic Feedback to the Client and Player!
 
 ### What's New:
-- Modern async/await patterns
+- Modern async/await patterns with WebSocket-based communication
+- Diagnostic logging for advanced troubleshooting
 - WebSocket-based communication from a custom Lib *see [bHapticsLib](https://github.com/nalathethird/bHapticsLib)* - Thanks to HerpDerpinstine for the main framework of this Lib!
 - Rate limiting to prevent buffer overflow
 - Idle detection (stops sending when motors are at zero)
@@ -53,13 +54,14 @@ The mod has minimal configuration options (by design):
 
 - **`enable_hotplug`** (default: `true`) - Allow devices to connect/disconnect without restarting
 - **`enable_self_haptics`** (default: `false`) - Enable your own touches to trigger your haptics (experimental)
+- **`enable_diagnostic_logging`** (default: `false`) - Enable verbose logging for debugging (verbose output, not recommended for normal play)
 
 To change settings, edit the mod config with [ResoniteModSettings](https://github.com/badhaloninja/ResoniteModSettings/releases/) or the config file created on first launch.
 
 ## Troubleshooting
 
 ### Mod won't load
-- Ensure `bHapticsLib.dll v1.0.8` or above is in `rml_libs` folder
+- Ensure `bHapticsLib.dll v1.0.9` or above is in `rml_libs` folder
 - Check Resonite logs for specific error messages
 
 ### Devices not detected
