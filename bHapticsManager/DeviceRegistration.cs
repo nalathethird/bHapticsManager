@@ -158,6 +158,12 @@ namespace bHapticsManager {
 					case LegacyBHaptics.PositionType.ForearmR:
 						return InvokeMethod("InitializeForearm", false);
 						
+					case LegacyBHaptics.PositionType.HandL:
+						return InvokeMethod("InitializeHand", true);
+						
+					case LegacyBHaptics.PositionType.HandR:
+						return InvokeMethod("InitializeHand", false);
+						
 					case LegacyBHaptics.PositionType.FootL:
 						return InvokeMethod("InitializeFoot", true);
 						

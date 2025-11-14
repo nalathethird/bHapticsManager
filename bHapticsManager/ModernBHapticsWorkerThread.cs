@@ -115,6 +115,7 @@ namespace bHapticsManager {
 				"HeadHapticPointPosition" => LegacyBHaptics.PositionType.Head,
 				"TorsoHapticPointPosition" => LegacyBHaptics.PositionType.Vest,
 				"ArmHapticPosition" => GetArmSide(position),
+				"HandHapticPosition" => GetHandSide(position),
 				"LegHapticPosition" => GetLegSide(position),
 				_ => LegacyBHaptics.PositionType.Vest
 			};
@@ -132,6 +133,20 @@ namespace bHapticsManager {
 			}
 			catch { }
 			return LegacyBHaptics.PositionType.ForearmR;
+		}
+		
+		private LegacyBHaptics.PositionType GetHandSide(HapticPointPosition position) {
+			try {
+				var sideProperty = position.GetType().GetProperty("Side");
+				if (sideProperty != null) {
+					var side = sideProperty.GetValue(position);
+					if (side != null && side.ToString() == "Left") {
+						return LegacyBHaptics.PositionType.HandL;
+					}
+				}
+			}
+			catch { }
+			return LegacyBHaptics.PositionType.HandR;
 		}
 		
 		private LegacyBHaptics.PositionType GetLegSide(HapticPointPosition position) {
