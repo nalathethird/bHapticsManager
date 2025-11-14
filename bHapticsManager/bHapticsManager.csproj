@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<TargetFramework>net9.0</TargetFramework>
-		<LangVersion>12.0</LangVersion>
+		<LangVersion>latest</LangVersion>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<!-- Change CopyToMods to true if you'd like builds to be moved into the Mods folder automatically-->
@@ -26,11 +26,26 @@
     <Compile Remove="bHapticsManagerFix.cs" />
     <Compile Remove="ModenHapticsPlayer.cs" />
     <Compile Remove="BatteryMonitor.cs" />
+    <Compile Remove="MessagePackProtocol.cs" />
+    <Compile Remove="MessagePackSerializer_bHaptics.cs" />
   </ItemGroup>
-
+  
   <ItemGroup>
     <None Remove="bHapticsLib.xml" />
-    <None Remove="whattfdoesthebHapticsLibdoes.md" />
+    <None Remove="CLEANUP_AND_FIXES_v1.0.3.md" />
+    <None Remove="COMPLETE_FIX_GUIDE_v1.0.4.md" />
+    <None Remove="COMPLETE_FIX_PLAN.md" />
+    <None Remove="CRITICAL_FIX_SUMMARY.md" />
+    <None Remove="CRITICAL_ISSUES_ANALYSIS.md" />
+    <None Remove="DESKTOP-E6J87SV - 2025.9.23.1237 - 2025-11-11 17_04_48.log" />
+    <None Remove="DESKTOP-E6J87SV - 2025.9.23.1237 - 2025-11-11 17_11_46.log" />
+    <None Remove="DOCUMENTATION_COVERAGE_SUMMARY.md" />
+    <None Remove="DUPLICATE_CONNECTION_FIX.md" />
+    <None Remove="EngineRefs_Core_Haptics_System_Documentation.md" />
+    <None Remove="EngineRefs_Haptics_Documentation.md" />
+    <None Remove="EXECUTIVE_SUMMARY.md" />
+    <None Remove="FIXES_IMPLEMENTED.md" />
+    <None Remove="QUICK_FIX_REFERENCE_v1.0.4.md" />
   </ItemGroup>
 
 	<ItemGroup>
@@ -72,6 +87,6 @@
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(CopyToMods)'=='true'">
 		<Message Text="Attempting to copy $(TargetFileName) to $(ResonitePath)rml_mods" Importance="high" />
 		<Copy SourceFiles="$(TargetDir)$(TargetFileName)" DestinationFolder="$(ResonitePath)rml_mods" ContinueOnError="true" />
-		<!-- Note: bHapticsLib.dll should be manually placed in rml_libs folder once -->
+		<!-- bHapticsLib.dll 1.0.9 with MessagePack support in rml_libs -->
 	</Target>
 </Project>
